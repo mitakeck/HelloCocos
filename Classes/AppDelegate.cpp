@@ -37,6 +37,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
+    
+    // 全ての端末で画面サイズを 320x480 として扱う
+    glview->setDesignResolutionSize(320, 480, ResolutionPolicy::SHOW_ALL);
+    
+    FileUtils::getInstance()->addSearchPath("images");
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
 
