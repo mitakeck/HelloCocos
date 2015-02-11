@@ -45,6 +45,33 @@ bool MainScene::init(){
     _player->setPosition(Vec2(size.width/2.0, size.height - 445));
     this->addChild(_player);
     
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->onTouchBegan = [](Touch* touch, Event* event){
+        // タッチされた時の処理
+        log("touch at (%f %f)", touch->getLocation().x, touch->getLocation().y);
+        return true;
+    };
+    listener->onTouchMoved = [this](Touch* touch, Event* event){
+        // タッチ中に動いた時の処理
+        // 前回とのタッチ位置との差をベクトルで取得する
+        Vec2 delta = touch->getDelta();
+        
+        // 現在の Player の座標を取得する
+        Vec2 position = _player->getPosition();
+        
+        // 移動後の座標を算出する
+        Vec2 newPosition = position + delta;
+        auto winSize = Director::getInstance()->getWinSize();
+        if(newPosition.x < 0){
+            newPosition.x = 0;
+        }else if(newPosition.x > winSize.width){
+            newPosition.x = winSize.width;
+        }
+        newPosition.y = _player->getPositionY();
+        _player->setPosition(newPosition);
+    };
+    director->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+    
     return true;
 }
 
