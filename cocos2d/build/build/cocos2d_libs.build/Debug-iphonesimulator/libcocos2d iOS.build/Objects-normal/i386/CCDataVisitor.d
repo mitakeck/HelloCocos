@@ -1,0 +1,25 @@
+dependencies: \
+  /Users/take/projects/HelloCocos/cocos2d/cocos/base/CCDataVisitor.cpp \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/base/CCRef.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/platform/CCPlatformMacros.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/base/ccConfig.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/platform/CCPlatformConfig.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/platform/CCPlatformDefine.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/platform/ios/CCPlatformDefine-ios.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/deprecated/CCBool.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/base/CCDataVisitor.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/deprecated/CCInteger.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/base/CCConsole.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/base/ccMacros.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/platform/CCStdC.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/platform/ios/CCStdC-ios.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/base/ccRandom.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/platform/CCCommon.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/deprecated/CCFloat.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/deprecated/CCDouble.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/deprecated/CCString.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/deprecated/CCArray.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/base/ccCArray.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/deprecated/CCDictionary.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/base/uthash.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../cocos/deprecated/CCSet.h

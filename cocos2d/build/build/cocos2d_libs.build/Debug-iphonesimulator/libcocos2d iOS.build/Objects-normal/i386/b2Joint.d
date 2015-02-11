@@ -1,0 +1,28 @@
+dependencies: \
+  /Users/take/projects/HelloCocos/cocos2d/external/Box2D/Dynamics/Joints/b2Joint.cpp \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/Joints/b2Joint.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Common/b2Math.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Common/b2Settings.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/Joints/b2DistanceJoint.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/Joints/b2WheelJoint.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/Joints/b2MouseJoint.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/Joints/b2RevoluteJoint.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/Joints/b2PrismaticJoint.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/Joints/b2PulleyJoint.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/Joints/b2GearJoint.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/Joints/b2WeldJoint.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/Joints/b2FrictionJoint.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/Joints/b2RopeJoint.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/Joints/b2MotorJoint.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/b2Body.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Collision/Shapes/b2Shape.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Common/b2BlockAllocator.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Collision/b2Collision.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/b2World.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Common/b2StackAllocator.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/b2ContactManager.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Collision/b2BroadPhase.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Collision/b2DynamicTree.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Common/b2GrowableStack.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/b2WorldCallbacks.h \
+  /Users/take/projects/HelloCocos/cocos2d/build/../external/Box2D/Dynamics/b2TimeStep.h
