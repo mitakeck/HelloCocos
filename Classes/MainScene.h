@@ -21,8 +21,32 @@ protected:
     bool init() override;
 public:
     static cocos2d::Scene* createScene();
+    void update(float dt);
     CREATE_FUNC(MainScene);
     CC_SYNTHESIZE_RETAIN(cocos2d::Sprite *, _player, Player);
+    CC_SYNTHESIZE(cocos2d::Vector<cocos2d::Sprite *>, _fruits, Fruits);
+private:
+    // フルーツの種類を定義する
+    enum class FruitType{
+        APPLE,  // りんご
+        GRAPE,  // ぶどう
+        ORANGE, // みかん
+        BANANA, // ばなな
+        CHERRY, // さくらんぼ
+        COUNT   // 最大数
+    };
+    
+    /** 画面にフルーツを新たに配置して、それを返却する
+     * @return 新たに作成されたフルール
+     */
+    cocos2d::Sprite* addFruit();
+    
+    
+    /** 画面からフルーツを取り除く
+     * @param fruit 削除するフルーツ
+     * @param return 正しく削除されたか
+     */
+    bool removeFruit(cocos2d::Sprite* fruit);
 };
 
 #endif /* defined(__HelloCocos__MainScene__) */
