@@ -47,6 +47,12 @@ private:
      * @param return 正しく削除されたか
      */
     bool removeFruit(cocos2d::Sprite* fruit);
+    
+    /** フルーツを取得する
+     * @param Sprite* 取得するフルーツ
+     */
+    void catchFruit(cocos2d::Sprite* fruit);
+     
 };
 
 #endif /* defined(__HelloCocos__MainScene__) */

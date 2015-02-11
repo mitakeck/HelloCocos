@@ -88,6 +88,15 @@ void MainScene::update(float dt){
     if(random==0){
         this->addFruit();
     }
+    
+    for(auto& fruit : _fruits){
+        Vec2 busketPosition = _player->getPosition() - Vec2(0, 10);
+        Rect boundingBox = fruit->getBoundingBox();
+        bool isHit = boundingBox.containsPoint(busketPosition);
+        if(isHit){
+            this->catchFruit(fruit);
+        }
+    }
 }
 
 Sprite* MainScene::addFruit(){
@@ -138,3 +147,7 @@ bool MainScene::removeFruit(cocos2d::Sprite* fruit){
     return false;
 }
 
+void MainScene::catchFruit(cocos2d::Sprite* fruit){
+    // フルーツを削除する
+    this->removeFruit(fruit);
+}
