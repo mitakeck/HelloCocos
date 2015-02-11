@@ -10,10 +10,11 @@
 
 USING_NS_CC;
 
-MainScene::MainScene(){
+MainScene::MainScene() :_player(NULL){
 }
 
 MainScene::~MainScene(){
+    CC_SAFE_RELEASE_NULL(_player);
 }
 
 Scene* MainScene::createScene(){
@@ -38,6 +39,11 @@ bool MainScene::init(){
     background->setPosition(Vec2(size.width/2.0, size.height/2.0));
     // 親ノードにスプライトを追加する
     this->addChild(background);
+    
+    // Sprite を生成して _player に格納
+    this->setPlayer(Sprite::create("player.png"));
+    _player->setPosition(Vec2(size.width/2.0, size.height - 445));
+    this->addChild(_player);
     
     return true;
 }

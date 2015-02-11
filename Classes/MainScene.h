@@ -22,6 +22,7 @@ protected:
 public:
     static cocos2d::Scene* createScene();
     CREATE_FUNC(MainScene);
+    CC_SYNTHESIZE_RETAIN(cocos2d::Sprite *, _player, Player);
 };
 
 #endif /* defined(__HelloCocos__MainScene__) */
