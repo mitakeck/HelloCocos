@@ -24,6 +24,8 @@ public:
     void update(float dt);
     CREATE_FUNC(MainScene);
     CC_SYNTHESIZE_RETAIN(cocos2d::Sprite *, _player, Player);
+    CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _scoreLabel, ScoreLabel);
+    CC_SYNTHESIZE(int, _score, Score);
     CC_SYNTHESIZE(cocos2d::Vector<cocos2d::Sprite *>, _fruits, Fruits);
 private:
     // フルーツの種類を定義する
