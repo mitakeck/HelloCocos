@@ -27,6 +27,9 @@ public:
     CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _scoreLabel, ScoreLabel);
     CC_SYNTHESIZE(int, _score, Score);
     CC_SYNTHESIZE(cocos2d::Vector<cocos2d::Sprite *>, _fruits, Fruits);
+    CC_SYNTHESIZE(float, _second, Second);
+    CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _secondLabel, SecondLabel);
+    
 private:
     // フルーツの種類を定義する
     enum class FruitType{

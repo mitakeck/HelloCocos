@@ -14,13 +14,16 @@ USING_NS_CC;
 const int FRUIT_TOP_MARGIN = 40;
 // フルーツの出現率
 const int FRUIT_SPAWN_PATE = 20;
+// 制限時間
+const float TIME_LIMIT_SECOND = 60;
 
-MainScene::MainScene() :_player(NULL), _score(0), _scoreLabel(NULL){
+MainScene::MainScene() :_player(NULL), _score(0), _scoreLabel(NULL), _second(TIME_LIMIT_SECOND), _secondLabel(NULL){
 }
 
 MainScene::~MainScene(){
     CC_SAFE_RELEASE_NULL(_player);
     CC_SAFE_RELEASE_NULL(_scoreLabel);
+    CC_SAFE_RELEASE_NULL(_secondLabel);
 }
 
 Scene* MainScene::createScene(){
@@ -96,6 +99,22 @@ bool MainScene::init(){
     scoreLabelHeader->setPosition(Vec2(size.width/2.0*1.5, size.height - 20));
     this->addChild(scoreLabelHeader);
     
+    // タイマーラベルの追加
+    int second = static_cast<int>(_second);
+    auto secondLabel = Label::createWithSystemFont(StringUtils::toString(second), "Marker Felt", 16);
+    this->setSecondLabel(secondLabel);
+    secondLabel->enableShadow(Color4B::BLACK, Size(0.5, 0.5), 3);
+    secondLabel->enableOutline(Color4B::BLACK, 1.5);
+    secondLabel->setPosition(Vec2(size.width/2.0, size.height - 40));
+    this->addChild(secondLabel);
+    
+    // タイマーヘッダーの追加
+    auto secondLabelHeader = Label::createWithSystemFont("TIME", "Marker Felt", 16);
+    secondLabelHeader->enableShadow(Color4B::BLACK, Size(0.5, 0.5), 3);
+    secondLabelHeader->enableOutline(Color4B::BLACK, 1.5);
+    secondLabelHeader->setPosition(Vec2(size.width/2.0, size.height - 20));
+    this->addChild(secondLabelHeader);
+    
     return true;
 }
 
@@ -114,6 +133,12 @@ void MainScene::update(float dt){
             this->catchFruit(fruit);
         }
     }
+    
+    // 残り時間を減らす
+    _second -= dt;
+    // 残り秒数の表示を更新する
+    int second = static_cast<int>(_second);
+    _secondLabel->setString(StringUtils::toString(second));
 }
 
 Sprite* MainScene::addFruit(){
