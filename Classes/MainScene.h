@@ -19,18 +19,15 @@ protected:
     MainScene();
     virtual ~MainScene();
     bool init() override;
-public:
-    static cocos2d::Scene* createScene();
-    void update(float dt);
-    CREATE_FUNC(MainScene);
-    CC_SYNTHESIZE_RETAIN(cocos2d::Sprite *, _player, Player);
-    CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _scoreLabel, ScoreLabel);
-    CC_SYNTHESIZE(int, _score, Score);
-    CC_SYNTHESIZE(cocos2d::Vector<cocos2d::Sprite *>, _fruits, Fruits);
-    CC_SYNTHESIZE(float, _second, Second);
-    CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _secondLabel, SecondLabel);
-    
 private:
+    // ゲームの状態を表します
+    enum class GameState{
+        // ゲーム中
+        PLAYING,
+        // スコア表示
+        RESULT,
+    };
+    
     // フルーツの種類を定義する
     enum class FruitType{
         APPLE,  // りんご
@@ -57,7 +54,22 @@ private:
      * @param Sprite* 取得するフルーツ
      */
     void catchFruit(cocos2d::Sprite* fruit);
-     
+    
+    /** ゲーム終了時に呼び出されます
+     */
+    void onResult();
+
+public:
+    static cocos2d::Scene* createScene();
+    void update(float dt);
+    CREATE_FUNC(MainScene);
+    CC_SYNTHESIZE_RETAIN(cocos2d::Sprite *, _player, Player);
+    CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _scoreLabel, ScoreLabel);
+    CC_SYNTHESIZE(int, _score, Score);
+    CC_SYNTHESIZE(cocos2d::Vector<cocos2d::Sprite *>, _fruits, Fruits);
+    CC_SYNTHESIZE(float, _second, Second);
+    CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _secondLabel, SecondLabel);
+    CC_SYNTHESIZE(GameState, _state, State);
 };
 
 #endif /* defined(__HelloCocos__MainScene__) */

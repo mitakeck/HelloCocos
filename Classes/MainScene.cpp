@@ -17,7 +17,7 @@ const int FRUIT_SPAWN_PATE = 20;
 // 制限時間
 const float TIME_LIMIT_SECOND = 60;
 
-MainScene::MainScene() :_player(NULL), _score(0), _scoreLabel(NULL), _second(TIME_LIMIT_SECOND), _secondLabel(NULL){
+MainScene::MainScene() :_player(NULL), _score(0), _scoreLabel(NULL), _second(TIME_LIMIT_SECOND), _secondLabel(NULL), _state(GameState::PLAYING){
 }
 
 MainScene::~MainScene(){
@@ -119,26 +119,34 @@ bool MainScene::init(){
 }
 
 void MainScene::update(float dt){
-    // 毎フレーム実行される
-    int random = rand() % FRUIT_SPAWN_PATE;
-    if(random==0){
-        this->addFruit();
-    }
     
-    for(auto& fruit : _fruits){
-        Vec2 busketPosition = _player->getPosition() - Vec2(0, 10);
-        Rect boundingBox = fruit->getBoundingBox();
-        bool isHit = boundingBox.containsPoint(busketPosition);
-        if(isHit){
-            this->catchFruit(fruit);
+    if(_state == GameState::PLAYING){
+        // 毎フレーム実行される
+        int random = rand() % FRUIT_SPAWN_PATE;
+        if(random==0){
+            this->addFruit();
+        }
+        
+        for(auto& fruit : _fruits){
+            Vec2 busketPosition = _player->getPosition() - Vec2(0, 10);
+            Rect boundingBox = fruit->getBoundingBox();
+            bool isHit = boundingBox.containsPoint(busketPosition);
+            if(isHit){
+                this->catchFruit(fruit);
+            }
+        }
+    
+        // 残り時間を減らす
+        _second -= dt;
+        // 残り秒数の表示を更新する
+        int second = static_cast<int>(_second);
+        _secondLabel->setString(StringUtils::toString(second));
+        
+        if(_second < 0){
+            // リザルト画面へ移行
+            this->onResult();
         }
     }
-    
-    // 残り時間を減らす
-    _second -= dt;
-    // 残り秒数の表示を更新する
-    int second = static_cast<int>(_second);
-    _secondLabel->setString(StringUtils::toString(second));
 }
 
 Sprite* MainScene::addFruit(){
@@ -194,4 +202,28 @@ void MainScene::catchFruit(cocos2d::Sprite* fruit){
     this->removeFruit(fruit);
     _score += 1;
     _scoreLabel->setString(StringUtils::toString(_score));
+}
+
+void MainScene::onResult(){
+    _state = GameState::RESULT;
+    auto winSize = Director::getInstance()->getWinSize();
+    
+    // 「もう一度遊ぶ」ボタン
+    auto replayButton = MenuItemImage::create("replay_button.png", "replay_button_pressed.png", [](Ref* ref){
+        // 新しく MainScene を作成して置き換えてやる
+        auto scene = MainScene::createScene();
+        Director::getInstance()->replaceScene(scene);
+    });
+    
+    // 「タイトルへ戻る」ボタン
+    auto titleButton = MenuItemImage::create("title_button.png", "tittle_button_pressed.png", [](Ref* ref){
+        //
+    });
+    
+    // 2 個のボタンからメニューを作成する
+    auto menu = Menu::create(replayButton, titleButton, NULL);
+    // ボタンを縦に並べる
+    menu->alignItemsVerticallyWithPadding(15);
+    menu->setPosition(Vec2(winSize.width/2.0, winSize.height/2.0));
+    this->addChild(menu);
 }
