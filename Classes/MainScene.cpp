@@ -18,8 +18,10 @@ const int FRUIT_SPAWN_PATE = 20;
 const float TIME_LIMIT_SECOND = 60;
 // 黄金のフルーツを取った時の点数
 const int GOLDEN_FRUIT_SCORE = 5;
+// 爆弾を取った時のマイナス点数
+const int BOMB_PENALTY_SCORE = -4;
 
-MainScene::MainScene() :_player(NULL), _score(0), _scoreLabel(NULL), _second(TIME_LIMIT_SECOND), _secondLabel(NULL), _state(GameState::PLAYING){
+MainScene::MainScene() :_player(NULL), _score(0), _scoreLabel(NULL), _second(TIME_LIMIT_SECOND), _secondLabel(NULL), _state(GameState::PLAYING), _isCrash(false){
 }
 
 MainScene::~MainScene(){
@@ -209,6 +211,7 @@ void MainScene::catchFruit(cocos2d::Sprite* fruit){
             break;
         case MainScene::FruitType::BOMB:
             // 爆弾を取った時の処理
+            this->onCatchBomb();
             break;
         default:
             // その他のフルーツのとき
@@ -245,4 +248,14 @@ void MainScene::onResult(){
     menu->alignItemsVerticallyWithPadding(15);
     menu->setPosition(Vec2(winSize.width/2.0, winSize.height/2.0));
     this->addChild(menu);
+}
+
+void MainScene::onCatchBomb(){
+    // クラッシュ状態にする
+    _isCrash = true;
+    
+    // アニメーション実装
+    // TODO
+    
+    _score = MAX(0, _score + BOMB_PENALTY_SCORE);
 }

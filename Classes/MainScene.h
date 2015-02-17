@@ -57,6 +57,10 @@ private:
      */
     void catchFruit(cocos2d::Sprite* fruit);
     
+    /** 爆弾を取ってしまったとき
+     */
+    void onCatchBomb();
+    
     /** ゲーム終了時に呼び出されます
      */
     void onResult();
@@ -72,6 +76,7 @@ public:
     CC_SYNTHESIZE(float, _second, Second);
     CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _secondLabel, SecondLabel);
     CC_SYNTHESIZE(GameState, _state, State);
+    CC_SYNTHESIZE(bool, _isCrash, IsCrash);
 };
 
 #endif /* defined(__HelloCocos__MainScene__) */
