@@ -16,6 +16,8 @@ const int FRUIT_TOP_MARGIN = 40;
 const int FRUIT_SPAWN_PATE = 20;
 // 制限時間
 const float TIME_LIMIT_SECOND = 60;
+// 黄金のフルーツを取った時の点数
+const int GOLDEN_FRUIT_SCORE = 5;
 
 MainScene::MainScene() :_player(NULL), _score(0), _scoreLabel(NULL), _second(TIME_LIMIT_SECOND), _secondLabel(NULL), _state(GameState::PLAYING){
 }
@@ -198,9 +200,26 @@ bool MainScene::removeFruit(cocos2d::Sprite* fruit){
 }
 
 void MainScene::catchFruit(cocos2d::Sprite* fruit){
+
+    FruitType fruitType = static_cast<FruitType>(fruit->getTag());
+    switch (fruitType) {
+        case MainScene::FruitType::GOLDEN:
+            // 黄金のフルーツを取った時の処理
+            _score += GOLDEN_FRUIT_SCORE;
+            break;
+        case MainScene::FruitType::BOMB:
+            // 爆弾を取った時の処理
+            break;
+        default:
+            // その他のフルーツのとき
+            _score += 1;
+            break;
+    }
+    
     // フルーツを削除する
     this->removeFruit(fruit);
-    _score += 1;
+
+    // スコア表示の更新
     _scoreLabel->setString(StringUtils::toString(_score));
 }
 

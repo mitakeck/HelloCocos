@@ -35,6 +35,8 @@ private:
         ORANGE, // みかん
         BANANA, // ばなな
         CHERRY, // さくらんぼ
+        GOLDEN, // 黄金のフルーツ
+        BOMB,   // 爆弾
         COUNT   // 最大数
     };
     
